@@ -1,5 +1,5 @@
 import { fetchBasketballData, setupPuppeteer, closePuppeteer } from './helpers/dataLoader.js'
-import { getBasketballStats } from '../db/index.js'
+import { saveBasketballStats } from '../db/index.js'
 
 const options = [
   {
@@ -45,7 +45,7 @@ async function run(){
     data.push(await fetchBasketballData(option, page))
   }
   await closePuppeteer(browser, page)
-  console.log(data)
+
   let basketballStandings = data.map(x=>{
     return {
       season: 2021,
@@ -70,8 +70,6 @@ async function run(){
       items: x.items.leaderboards
     }
   })
-  // console.log(basketballStandings, basketballTeamsStats, basketballLeaderboards)
-  await getBasketballStats(basketballLeaderboards, basketballStandings, basketballTeamsStats)
-  // console.log(data[1].vtbUnited.leaderboards.rows, 'data')
+  await saveBasketballStats(basketballLeaderboards, basketballStandings, basketballTeamsStats)
 }
 run()

@@ -27,7 +27,7 @@ const BasketballTeamsStats = BasketballTeamsStatsModel(sequelize, DataTypes);
 
 // (async () => await sequelize.sync({ alter: true, force: false }))();
 
-async function getBasketballLeaderboards(data) {
+async function saveBasketballLeaderboards(data) {
   try {
     await BasketballLeaderboards.bulkCreate( data, { updateOnDuplicate: ["items"] } )
     console.log('basketball leaderboards updated')
@@ -35,7 +35,7 @@ async function getBasketballLeaderboards(data) {
     throw error
   }
 }
-async function getBasketballStandings(data) {
+async function saveBasketballStandings(data) {
   try {
     await BasketballStandings.bulkCreate( data, { updateOnDuplicate: ["items"] } )
     console.log('basketball standings updated')
@@ -43,7 +43,7 @@ async function getBasketballStandings(data) {
     throw error
   }
 }
-async function getBasketBasketballTeamsStats(data) {
+async function saveBasketBasketballTeamsStats(data) {
   try {
     await BasketballTeamsStats.bulkCreate( data, { updateOnDuplicate: ["items"] } )
     console.log('basketball teams stats updated')
@@ -52,9 +52,9 @@ async function getBasketBasketballTeamsStats(data) {
   }
 }
 
-export async function getBasketballStats(basketballLeaderboards, basketballStandings, basketballTeamsStats){
-  await getBasketballLeaderboards(basketballLeaderboards)
-  await getBasketballStandings(basketballStandings)
-  await getBasketBasketballTeamsStats(basketballTeamsStats)
+export async function saveBasketballStats(basketballLeaderboards, basketballStandings, basketballTeamsStats){
+  await saveBasketballLeaderboards(basketballLeaderboards)
+  await saveBasketballStandings(basketballStandings)
+  await saveBasketBasketballTeamsStats(basketballTeamsStats)
   sequelize.close();
 }
