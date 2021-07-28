@@ -1,4 +1,4 @@
-import { fetchBasketballData, setupPuppeteer, close } from './helpers/dataLoader.js'
+import { fetchBasketballData, setupPuppeteer, closePuppeteer } from './helpers/dataLoader.js'
 import { getBasketballStats } from '../db/index.js'
 
 const options = [
@@ -44,7 +44,7 @@ async function run(){
   for (const option of options) {
     data.push(await fetchBasketballData(option, page))
   }
-  await close(browser, page)
+  await closePuppeteer(browser, page)
   console.log(data)
   let basketballStandings = data.map(x=>{
     return {

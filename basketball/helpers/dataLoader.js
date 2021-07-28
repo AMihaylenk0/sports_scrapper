@@ -16,7 +16,7 @@ export async function setupPuppeteer(){
   const page = await browser.newPage();
   return {browser, page}
 }
-export async function close(browser, page){
+export async function closePuppeteer(browser, page){
   await page.close()
   await browser.close()
 }
