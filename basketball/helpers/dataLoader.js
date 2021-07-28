@@ -6,7 +6,7 @@ import {getLeaderboards} from "./leaderboards.js"
 export async function setupPuppeteer(){
   const browser = await puppeteer.launch(
     {
-    headless: false,
+    headless: true,
     defaultViewport: null,
     args: ['--start-maximized']
   }
@@ -27,7 +27,8 @@ export async function fetchBasketballData({league, url, standingsId}, page){
     let standings = await getStandings(page, standingsId)
     let leaderboards = await getLeaderboards(page)
     return {
-      [league] : {
+      league: league,
+      items : {
         teamsStats,
         standings,
         leaderboards
