@@ -7,62 +7,34 @@ export async function getStandings(page, standingsId){
       `table#${standingsId} thead tr.over_header th[data-stat]`,
       (options) => options.map((option) => option.textContent)
     )
-    cols.unshift(' ');
-    table_headers = cols.map(x => {
-      if(x === ' '){
-        return {
-          Header: ' ',
-          columns: [
-            {
-              Header: 'Команда',
-              accessor: 'team',
-            }
-          ]
-        }
-      } else if(x === 'Regular Season') {
-        return {
-          Header: x,
-          columns: [
-            {
-              Header: 'В',
-              accessor: 'wins|Regular Season',
-            },
-            {
-              Header: 'П',
-              accessor: 'losses|Regular Season',
-            }
-          ]
-        }
-      } else if(x === 'Playoffs') {
-        return {
-          Header: x,
-          columns: [
-            {
-              Header: 'В',
-              accessor: 'wins|Playoffs',
-            },
-            {
-              Header: 'П',
-              accessor: 'losses|Playoffs',
-            }
-          ]
-        }
-      } else if(x === 'Semifinals') {
-        return {
-          Header: x,
-          columns: [
-            {
-              Header: 'В',
-              accessor: 'wins|Semifinals',
-            },
-            {
-              Header: 'П',
-              accessor: 'losses|Semifinals',
-            }
-          ]
-        }
-      }
-    })
+    // let subCols = await page.$$eval(
+    //   `table#${standingsId} thead tr:not([class="over_header"]) th:not([data-stat="team"])`,
+    //   (options) => options.map((option) => option.textContent)
+    // )
+
+    // let headers = []
+    // for (let i of cols) {
+    //   let arr = {
+    //         Header: i,
+    //         columns: []
+    //       }
+    //   let subColslength = subCols.length
+    //   for (let j = 0; j < subColslength; j++) {
+    //     if(subCols[0] === '&nbsp;' || subCols[0] === ' ') {
+    //       subCols.shift(subCols[j])
+    //       break
+    //     }
+    //     let value = subCols.shift(subCols[j])
+    //     let obj = {
+    //       Header: value,
+    //       accessor: value
+    //     }
+    //     arr.columns.push(obj)
+    //   }
+    //   headers.push(arr)
+    // }
+
+    table_headers = mapHeaders(cols, standingsId)
   } catch (error) {
     console.error(error)
   }
@@ -96,4 +68,150 @@ export async function getStandings(page, standingsId){
     headers: table_headers,
     rows: rowsValues
   }
+}
+function mapHeaders(cols, standingsId){
+  cols.unshift(' ');
+  if (standingsId === 'chn_standings' || standingsId === 'spa_standings' || standingsId === 'fra_standings' || standingsId === 'ita_standings') {
+    return cols.map(x => {
+      if(x === ' '){
+        return {
+          Header: ' ',
+          columns: [
+            {
+              Header: 'Команда',
+              accessor: 'team',
+            }
+          ]
+        }
+      } else if(x === 'Regular Season') {
+        return {
+          Header: x,
+          columns: [
+            {
+              Header: 'В',
+              accessor: 'wins|Regular Season',
+            },
+            {
+              Header: 'П',
+              accessor: 'losses|Regular Season',
+            },
+            {
+              Header: 'ПП',
+              accessor: 'win_loss_pct|Regular Season',
+            },
+            {
+              Header: 'ИГП',
+              accessor: 'gb|Regular Season',
+            },
+            {
+              Header: 'ОН',
+              accessor: 'pts_per_g|Regular Season',
+            },
+            {
+              Header: 'ОП',
+              accessor: 'opp_pts_per_g|Regular Season',
+            }
+          ]
+        }
+      } else if(x === 'Playoffs') {
+        return {
+          Header: x,
+          columns: [
+            {
+              Header: 'В',
+              accessor: 'wins|Playoffs',
+            },
+            {
+              Header: 'П',
+              accessor: 'losses|Playoffs',
+            }
+          ]
+        }
+      }
+    })
+  } else {
+  return cols.map(x => {
+    if(x === ' '){
+      return {
+        Header: ' ',
+        columns: [
+          {
+            Header: 'Команда',
+            accessor: 'team',
+          }
+        ]
+      }
+    } else if(x === 'Regular Season') {
+      return {
+        Header: x,
+        columns: [
+          {
+            Header: 'В',
+            accessor: 'wins|Regular Season',
+          },
+          {
+            Header: 'П',
+            accessor: 'losses|Regular Season',
+          }
+        ]
+      }
+    } else if(x === 'Playoffs') {
+      return {
+        Header: x,
+        columns: [
+          {
+            Header: 'В',
+            accessor: 'wins|Playoffs',
+          },
+          {
+            Header: 'П',
+            accessor: 'losses|Playoffs',
+          }
+        ]
+      }
+    } else if(x === 'Semifinals') {
+      return {
+        Header: x,
+        columns: [
+          {
+            Header: 'В',
+            accessor: 'wins|Semifinals',
+          },
+          {
+            Header: 'П',
+            accessor: 'losses|Semifinals',
+          }
+        ]
+      }
+    } else if(x === 'Last 16') {
+      return {
+        Header: x,
+        columns: [
+          {
+            Header: 'В',
+            accessor: 'wins|Last 16',
+          },
+          {
+            Header: 'П',
+            accessor: 'losses|Last 16',
+          }
+        ]
+      }
+    } else if(x === 'Quarterfinals') {
+      return {
+        Header: x,
+        columns: [
+          {
+            Header: 'В',
+            accessor: 'wins|Quarterfinals',
+          },
+          {
+            Header: 'П',
+            accessor: 'losses|Quarterfinals',
+          }
+        ]
+      }
+    }
+  })
+}
 }
