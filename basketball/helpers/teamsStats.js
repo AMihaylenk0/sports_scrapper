@@ -25,6 +25,11 @@ export async function getTeamsStats(page){
             return Object.entries(item)
           })
           )
+      }).map(x=> {
+        return {
+          ...x,
+          Club: formatString(x.Club),
+        }
       })
       rowsValues.push(...newarr)
   } catch (error) {
@@ -40,5 +45,12 @@ export async function getTeamsStats(page){
   return {
     headers: table_headers,
     rows: rowsValues
+  }
+}
+function formatString(str){
+  if(str && str.endsWith(' *')){
+    return str.slice(0, str.length -2)
+  } else {
+    return str.trimLeft()
   }
 }

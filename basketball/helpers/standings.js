@@ -59,6 +59,11 @@ export async function getStandings(page, standingsId){
             return Object.entries(item).flat()
           })
           )
+      }).map(x=> {
+        return {
+          ...x,
+          team: formatString(x.team),
+        }
       })
       rowsValues.push(...newarr)
   } catch (error) {
@@ -67,6 +72,14 @@ export async function getStandings(page, standingsId){
   return {
     headers: table_headers,
     rows: rowsValues
+  }
+}
+
+function formatString(str){
+  if(str && str.endsWith(' *')){
+    return str.slice(0, str.length -2)
+  } else {
+    return str.trimLeft()
   }
 }
 function mapHeaders(cols, standingsId){
