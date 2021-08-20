@@ -1,16 +1,16 @@
 import { fetchBasketballData, setupPuppeteer, closePuppeteer } from './helpers/dataLoader.js'
-import { saveBasketballStats } from '../db/index.js'
+import { saveBasketballStats } from '../db/utils/basketball/index.js'
 import { options } from './config.js'
 
 async function run(){
   let {browser, page} = await setupPuppeteer()
-  let data = []
+  let basketballData = []
   for (const option of options) {
-    data.push(await fetchBasketballData(option, page))
+    basketballData.push(await fetchBasketballData(option, page))
   }
   await closePuppeteer(browser, page)
 
-  let basketballStandings = data.map(x=>{
+  let basketballStandings = basketballData.map(x=>{
     return {
       season: 2021,
       league: x.league,
@@ -18,7 +18,7 @@ async function run(){
       items: x.items.standings
     }
   })
-  let basketballTeamsStats = data.map(x=>{
+  let basketballTeamsStats = basketballData.map(x=>{
     return {
       season: 2021,
       league: x.league,
@@ -26,7 +26,7 @@ async function run(){
       items: x.items.teamsStats
     }
   })
-  let basketballLeaderboards = data.map(x=>{
+  let basketballLeaderboards = basketballData.map(x=>{
     return {
       season: 2021,
       league: x.league,

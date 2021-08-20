@@ -1,16 +1,20 @@
-export async function getTeamsStats(page){
+export async function getFootballStandings(page, standingsUrl){
+  page.setDefaultTimeout(0)
+  await page.goto(standingsUrl);
+  await page.waitForSelector('.tournament-standings-table');
   let table_headers
   let rowsValues = []
+
   try {
     table_headers = await page.$$eval(
-      "#all_team_stats_totals table.sortable.stats_table.now_sortable thead tr th",
+      ".tournament-standings-table [id^='standings'] table thead tr[class*='general-header'] th",
       (options) => options.map((option) => option.textContent)
     )
   } catch (error) {
     console.error(error)
   }
   try {
-    const rows = await page.$$('#all_team_stats_totals table.sortable.stats_table.now_sortable tbody tr');
+    const rows = await page.$$('.tournament-standings-table table[id*="standings"] tbody tr');
     let array = []
       for (const row of rows) {
         array.push(await row.$$eval('th, td', (options, table_headers) => options.map( (option, index) => {
@@ -19,33 +23,21 @@ export async function getTeamsStats(page){
           }
         }), table_headers));
       }
-      // let newarr = array.map(x=> {
-      //   return Object.fromEntries(
-      //     x.flatMap(item => {
-      //       return Object.entries(item)
-      //     })
-      //     )
-      // }).map(x=> {
-      //   return {
-      //     ...x,
-      //     Club: formatString(x.Club),
-      //   }
-      // })
       let newarr = array.flatMap((x,i)=>{
         return Object.assign({}, ...x)
       })
       newarr = newarr.map(x=> {
         return {
           ...x,
-          Club: formatString(x.Club)
+          'Команда': formatString(x['Команда'])
         }
       })
       rowsValues.push(...newarr)
   } catch (error) {
     console.error(error)
   }
-  // map headers
-  table_headers = table_headers.map(x=> {
+   // map headers
+   table_headers = table_headers.map(x=> {
     return {
       Header: x,
       accessor: x,
@@ -57,9 +49,5 @@ export async function getTeamsStats(page){
   }
 }
 function formatString(str){
-  if(str && str.endsWith(' *')){
-    return str.slice(0, str.length -2)
-  } else {
-    return str.trimLeft()
-  }
+  return str.trim().replace(/\s+/g, '').split(/(\d+)/).filter(Boolean).join(' ')
 }

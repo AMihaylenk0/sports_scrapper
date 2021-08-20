@@ -53,16 +53,25 @@ export async function getStandings(page, standingsId){
         }).filter(Boolean)));
       }
       // flat an array
-      let newarr = array.map(x=> {
-        return Object.fromEntries(
-          x.map(item => {
-            return Object.entries(item).flat()
-          })
-          )
-      }).map(x=> {
+      // let newarr = array.map(x=> {
+      //   return Object.fromEntries(
+      //     x.map(item => {
+      //       return Object.entries(item).flat()
+      //     })
+      //     )
+      // }).map(x=> {
+      //   return {
+      //     ...x,
+      //     team: formatString(x.team),
+      //   }
+      // })
+      let newarr = array.flatMap((x,i)=>{
+        return Object.assign({}, ...x)
+      })
+      newarr = newarr.map(x=> {
         return {
           ...x,
-          team: formatString(x.team),
+          team: formatString(x.team)
         }
       })
       rowsValues.push(...newarr)

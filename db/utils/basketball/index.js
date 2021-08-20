@@ -2,9 +2,9 @@ import dotenv from "dotenv";
 dotenv.config()
 import sql from 'sequelize'
 const { Sequelize, Op, DataTypes } = sql;
-import BasketballLeaderboardsModel from "./models/basketball/basketballLeaderboards.js"
-import BasketballStandingsModel from "./models/basketball/basketballStandings.js"
-import BasketballTeamsStatsModel from "./models/basketball/basketballTeamsStats.js"
+import BasketballLeaderboardsModel from "../../models/basketball/basketballLeaderboards.js"
+import BasketballStandingsModel from "../../models/basketball/basketballStandings.js"
+import BasketballTeamsStatsModel from "../../models/basketball/basketballTeamsStats.js"
 
 function initDB() {
  let sql = new Sequelize(`${process.env.DATABASE_URI}?sslmode=require`, {
