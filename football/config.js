@@ -29,10 +29,10 @@ export const options = [
     teamsStatsUrl: 'https://ru.whoscored.com/Regions/74/Tournaments/22/Seasons/8671/Stages/19866/TeamStatistics/%D0%A4%D1%80%D0%B0%D0%BD%D1%86%D0%B8%D1%8F-1-2021-2022',
     playersStatsUrl: 'https://ru.whoscored.com/Regions/74/Tournaments/22/Seasons/8671/Stages/19866/PlayerStatistics/%D0%A4%D1%80%D0%B0%D0%BD%D1%86%D0%B8%D1%8F-1-2021-2022',
   },
-  // {
-  //   league: 'seria_a',
-  //   standingsUrl: 'https://ru.whoscored.com/Regions/108/Tournaments/5/%D0%98%D1%82%D0%B0%D0%BB%D0%B8%D1%8F-%D0%98%D1%82%D0%B0%D0%BB%D0%B8%D1%8F-1',
-  //   teamsStatsUrl: 'https://ru.whoscored.com/Regions/108/Tournaments/5/Seasons/8735/Stages/19982/TeamStatistics/%D0%98%D1%82%D0%B0%D0%BB%D0%B8%D1%8F-1-2021-2022',
-  //   playersStatsUrl: 'https://ru.whoscored.com/Regions/108/Tournaments/5/Seasons/8735/Stages/19982/PlayerStatistics/%D0%98%D1%82%D0%B0%D0%BB%D0%B8%D1%8F-1-2021-2022',
-  // },
+  {
+    league: 'seria_a',
+    standingsUrl: 'https://ru.whoscored.com/Regions/108/Tournaments/5/%D0%98%D1%82%D0%B0%D0%BB%D0%B8%D1%8F-%D0%98%D1%82%D0%B0%D0%BB%D0%B8%D1%8F-1',
+    teamsStatsUrl: 'https://ru.whoscored.com/Regions/108/Tournaments/5/Seasons/8735/Stages/19982/TeamStatistics/%D0%98%D1%82%D0%B0%D0%BB%D0%B8%D1%8F-1-2021-2022',
+    playersStatsUrl: 'https://ru.whoscored.com/Regions/108/Tournaments/5/Seasons/8735/Stages/19982/PlayerStatistics/%D0%98%D1%82%D0%B0%D0%BB%D0%B8%D1%8F-1-2021-2022',
+  },
 ]
