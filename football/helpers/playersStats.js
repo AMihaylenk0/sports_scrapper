@@ -22,7 +22,7 @@ async function getSummuryStats(page) {
     let isNextBtnDisabled = await page.evaluate((nextBtnSelector) => document.querySelector(nextBtnSelector).className.includes('disabled'), nextBtnSelector)
     while (!isNextBtnDisabled) {
       await page.waitForSelector(nextBtnSelector);
-      await page.waitForTimeout(500);
+      await page.waitForTimeout(1000);
       await page.evaluate((nextBtnSelector) => document.querySelector(nextBtnSelector).click(), nextBtnSelector);
       await parseData()
       isNextBtnDisabled = await page.evaluate((nextBtnSelector) => document.querySelector(nextBtnSelector).className.includes('disabled'), nextBtnSelector)
@@ -92,7 +92,7 @@ async function getDefenseStats(page) {
 
     while (!isNextBtnDisabled) {
       await page.waitForSelector(nextBtnSelector);
-      await page.waitForTimeout(500);
+      await page.waitForTimeout(1000);
       await page.evaluate((nextBtnSelector) => document.querySelector(nextBtnSelector).click(), nextBtnSelector);
       await parseData()
       isNextBtnDisabled = await page.evaluate((nextBtnSelector) => document.querySelector(nextBtnSelector).className.includes('disabled'), nextBtnSelector)
@@ -162,7 +162,7 @@ async function getOffensiveStats(page) {
     
     while (!isNextBtnDisabled) {
       await page.waitForSelector(nextBtnSelector);
-      await page.waitForTimeout(500);
+      await page.waitForTimeout(1000);
       await page.evaluate((nextBtnSelector) => document.querySelector(nextBtnSelector).click(), nextBtnSelector);
       await parseData()
       isNextBtnDisabled = await page.evaluate((nextBtnSelector) => document.querySelector(nextBtnSelector).className.includes('disabled'), nextBtnSelector)
@@ -232,7 +232,7 @@ async function getAssistsStats(page) {
     
     while (!isNextBtnDisabled) {
       await page.waitForSelector(nextBtnSelector);
-      await page.waitForTimeout(500);
+      await page.waitForTimeout(1000);
       await page.evaluate((nextBtnSelector) => document.querySelector(nextBtnSelector).click(), nextBtnSelector);
       await parseData()
       isNextBtnDisabled = await page.evaluate((nextBtnSelector) => document.querySelector(nextBtnSelector).className.includes('disabled'), nextBtnSelector)

@@ -40,6 +40,12 @@ async function getSummuryStats(page) {
     let newarr = array.flatMap((x,i)=>{
       return Object.assign({}, ...x)
     })
+    newarr = newarr.map(x=> {
+      return {
+        ...x,
+        'Команда': formatString(x['Команда'])
+      }
+    })
     rowsValues.push(...newarr)
     // map headers
     table_headers = table_headers.map(x=> {
@@ -79,9 +85,14 @@ async function getDefenseStats(page) {
           }
       }), table_headers));
     }
-
     let newarr = array.flatMap((x,i)=>{
       return Object.assign({}, ...x)
+    })
+    newarr = newarr.map(x=> {
+      return {
+        ...x,
+        'Команда': formatString(x['Команда'])
+      }
     })
     rowsValues.push(...newarr)
     // map headers
@@ -121,9 +132,14 @@ async function getOffensiveStats(page) {
           }
       }), table_headers));
     }
-
     let newarr = array.flatMap((x,i)=>{
       return Object.assign({}, ...x)
+    })
+    newarr = newarr.map(x=> {
+      return {
+        ...x,
+        'Команда': formatString(x['Команда'])
+      }
     })
     rowsValues.push(...newarr)
     // map headers
@@ -140,4 +156,8 @@ async function getOffensiveStats(page) {
   } catch (error) {
     console.error(error)
   }
+}
+
+function formatString(str){
+  return str.trim().split(/(\d+. )/).filter(Boolean)
 }

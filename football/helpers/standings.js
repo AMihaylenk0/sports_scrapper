@@ -50,5 +50,5 @@ export async function getFootballStandings(page, standingsUrl){
 }
 function formatString(str){
   // return str.trim().replace(/\s+/g, '').split(/(\d+)/).filter(Boolean).join(' ')
-  return str.trim().split(/(\d+)/).filter(Boolean).join('. ')
+  return str.trim().split(/(\d+)/).filter(Boolean)
 }
