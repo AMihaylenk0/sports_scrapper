@@ -7,6 +7,7 @@ async function run(){
   let footballData = []
   for (const option of options) {
     footballData.push(await fetchFootballData(option, page))
+    console.log(`data for ${option.league} loaded`)
   }
   await closePuppeteer(browser, page)
   console.log(footballData, 'footballdata')
