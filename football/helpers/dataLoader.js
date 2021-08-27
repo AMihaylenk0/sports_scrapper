@@ -29,14 +29,13 @@ export async function setupPuppeteer(){
     }
   }
 
-  
   const browser = await puppeteer.launch(
     {
       headless: true,
       defaultViewport: null,
       args: ['--start-maximized', "--no-sandbox", "--disable-setuid-sandbox", '--disable-gpu']
     }
-    );
+  );
     
     console.log("Opening page...");
     const page = await browser.newPage();
