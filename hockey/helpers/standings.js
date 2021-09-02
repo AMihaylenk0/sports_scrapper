@@ -36,6 +36,9 @@ export async function getKHLStandings(page, league){
             accessor: x.name,
           }
         })
+        table_rows = table_rows.flatMap((x,i)=>{
+          return Object.assign({}, ...x)
+        })
         standings.push({
           header,
           table_headers,

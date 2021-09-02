@@ -9,4 +9,9 @@ export const options = [
     league: 'KHL',
     url: 'https://www.khl.ru/calendar/',
   },
+  {
+    category: 'teams_stats',
+    league: 'KHL',
+    url: 'https://www.khl.ru/stat/teams/',
+  },
 ]

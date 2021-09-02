@@ -4,7 +4,7 @@ export async function getKHLScedule(page, league){
   try {
     scedule = await page.evaluate(() => {
       let data = []
-      for (const gameDay of [...document.querySelectorAll('.tab-calendar .b-final_cup_date')]) {
+      for (const gameDay of [...document.querySelectorAll('#tab-calendar-all .b-final_cup_date')]) {
         // get headers
         let headers = []
         for (let i = 0; i < gameDay.children.length; i++) {
@@ -27,7 +27,8 @@ export async function getKHLScedule(page, league){
           gamesInfo.teams.awayTeamCity = game.querySelector('.b-details.m-club.m-rightward p').innerText.trim()
           
           gamesInfo.timeOrScore = game.querySelector('.b-score .b-total_score h3').innerText.trim()
-          gamesInfo.gameCity = game.querySelector('.b-score .b-period_score p').innerText.trim()
+          let gameCity = game.querySelector('.b-score .b-period_score p')
+          gameCity && (gamesInfo.gameCity = gameCity.innerText.trim());
           games.push(gamesInfo)
         }
         data.push({

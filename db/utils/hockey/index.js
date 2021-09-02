@@ -3,7 +3,8 @@ dotenv.config()
 import sql from 'sequelize'
 const { Sequelize, Op, DataTypes } = sql;
 import HockeyStandingsModel from "../../models/hockey/hockeyStandings.js"
-import HockeySceduleModel from "../../models/hockey/hockeyScedule.js"
+import HockeyScheduleModel from "../../models/hockey/hockeySchedule.js"
+import HockeyTeamsStatsModel from "../../models/hockey/hockeyTeamsStats.js"
 
 function initDB() {
  let sql = new Sequelize(`${process.env.DATABASE_URI}?sslmode=require`, {
@@ -21,7 +22,8 @@ function initDB() {
 }
 let sequelize = initDB();
 const HockeyStandings = HockeyStandingsModel(sequelize, DataTypes);
-const HockeyScedule = HockeySceduleModel(sequelize, DataTypes);
+const HockeySchedule = HockeyScheduleModel(sequelize, DataTypes);
+const HockeyTeamsStats = HockeyTeamsStatsModel(sequelize, DataTypes);
 
 // (async () => await sequelize.sync({ alter: true, force: false }))();
 
@@ -33,17 +35,26 @@ async function saveHockeyStandings(data) {
     throw error
   }
 }
-async function saveHockeyScedule(data) {
+async function saveHockeySchedule(data) {
   try {
-    await HockeyScedule.upsert( data )
-    console.log('hockey scedule updated')
+    await HockeySchedule.upsert( data )
+    console.log('hockey schedule updated')
+  } catch (error) {
+    throw error
+  }
+}
+async function saveHockeyTeamsStats(data) {
+  try {
+    await HockeyTeamsStats.upsert( data )
+    console.log('hockey teams stats updated')
   } catch (error) {
     throw error
   }
 }
 
-export async function saveHockeyStats(KHLStandings, KHLScedule){
+export async function saveHockeyStats(KHLStandings, KHLSchedule, KHLTeamsStats){
   await saveHockeyStandings(KHLStandings)
-  await saveHockeyScedule(KHLScedule)
+  await saveHockeySchedule(KHLSchedule)
+  await saveHockeyTeamsStats(KHLTeamsStats)
   sequelize.close();
 }
