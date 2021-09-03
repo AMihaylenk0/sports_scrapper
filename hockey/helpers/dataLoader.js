@@ -2,6 +2,8 @@ import puppeteer from "puppeteer"
 import {getKHLStandings} from "./standings.js"
 import {getKHLScedule} from "./scedule.js"
 import {getKHLTeamsStats} from "./teamsStats.js"
+import {getKHLPlayersStats} from "./playersStats.js"
+import {getKHLPlayers} from "./players.js"
 // import {getLeaderboards} from "./leaderboards.js"
 
 export async function setupPuppeteer(){
@@ -47,7 +49,7 @@ export async function closePuppeteer(browser, page){
 }
 export async function fetchKHLData(options, page){
     console.log("Going to website");
-    let standings, scedule, teamsStats
+    let standings, scedule, teamsStats, playersStats, players
     for (const option of options) {
       let { url, category, league } = option
       await page.goto(url);
@@ -60,11 +62,19 @@ export async function fetchKHLData(options, page){
       if (category === 'teams_stats') {
         teamsStats = await getKHLTeamsStats(page, league)
       }
+      if (category === 'players_stats') {
+        playersStats = await getKHLPlayersStats(page, league)
+      }
+      if (category === 'players') {
+        players = await getKHLPlayers(page, league)
+      }
     }
     return {
       standings,
       scedule,
-      teamsStats
+      teamsStats,
+      playersStats,
+      players
     }
 }
 

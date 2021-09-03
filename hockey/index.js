@@ -4,7 +4,7 @@ import { options } from './config.js'
 
 async function run(){
   let {browser, page} = await setupPuppeteer()
-  let { standings, scedule, teamsStats} = await fetchKHLData(options, page)
+  let { standings, scedule, teamsStats, playersStats, players} = await fetchKHLData(options, page)
   await closePuppeteer(browser, page)
   let KHLScedule = {
       league: scedule.league,
@@ -21,6 +21,16 @@ async function run(){
       season: 2021,
       items: teamsStats
     }
-  await saveHockeyStats(KHLStandings, KHLScedule, KHLTeamsStats)
+  let KHLPlayersStats = {
+      league: playersStats.league,
+      season: 2021,
+      items: playersStats
+    }
+  let KHLPlayers = {
+      league: players.league,
+      season: 2021,
+      items: players
+    }
+  await saveHockeyStats(KHLStandings, KHLScedule, KHLTeamsStats, KHLPlayersStats, KHLPlayers)
 }
 run()
