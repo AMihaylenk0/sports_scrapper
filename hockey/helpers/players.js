@@ -13,6 +13,7 @@ async function parsePlayers(page) {
   try {
     let nextBtnSelector = "a.paginate_button.next";
     await page.waitForSelector(nextBtnSelector);
+    await parseData()
     let isNextBtnDisabled = await page.evaluate((nextBtnSelector) => document.querySelector(nextBtnSelector).className.includes('disabled'), nextBtnSelector)
     while (!isNextBtnDisabled) {
       // await page.waitForSelector(nextBtnSelector);

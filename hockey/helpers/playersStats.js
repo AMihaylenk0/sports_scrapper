@@ -86,9 +86,19 @@ async function getDefendersStats(page) {
       let array = []
       for (const row of rows) {
         array.push(await row.$$eval('th, td:not([class*="control"])', (options, table_headers) => options.map( (option, index) => {
-          return {
-            [table_headers[index]] : option.textContent.trim()
+          if (index === 0) {
+            let player = {}
+            for (let i = 0; i < option.children.length; i++) {
+              if (option.children[i].tagName === 'IMG') {
+                player.imgSrc = `https://www.khl.ru${option.children[i].getAttribute("src")}` /* add base url to path (src = /images/teamplayers/12474/40152.jpg) */
+              } else {
+                player.name = option.children[i].textContent.trim()
+              }
             }
+            return {[table_headers[index]] : player}
+          } else {
+            return {[table_headers[index]] : option.textContent.trim()}
+          }
           }), table_headers));
         }
       let newarr = array.flatMap((x,i)=>{
@@ -134,9 +144,19 @@ async function getForwardsStats(page) {
       let array = []
       for (const row of rows) {
         array.push(await row.$$eval('th, td:not([class*="control"])', (options, table_headers) => options.map( (option, index) => {
-          return {
-            [table_headers[index]] : option.textContent.trim()
+          if (index === 0) {
+            let player = {}
+            for (let i = 0; i < option.children.length; i++) {
+              if (option.children[i].tagName === 'IMG') {
+                player.imgSrc = `https://www.khl.ru${option.children[i].getAttribute("src")}` /* add base url to path (src = /images/teamplayers/12474/40152.jpg) */
+              } else {
+                player.name = option.children[i].textContent.trim()
+              }
             }
+            return {[table_headers[index]] : player}
+          } else {
+            return {[table_headers[index]] : option.textContent.trim()}
+          }
           }), table_headers));
         }
       let newarr = array.flatMap((x,i)=>{
