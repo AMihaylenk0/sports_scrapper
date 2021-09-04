@@ -16,10 +16,10 @@ export async function getTennisScedule(page){
             let nameAndCountry = playerNode.querySelector('.tennis-results__team-name').textContent
             let arr = nameAndCountry.split('(')
             let playerName = arr[0]
-            let country = arr[1].split(')')[0]
+            let country = (arr[1] && arr[1].split(')')[0]) || null
             let scoresStr = playerNode.querySelector('.tennis-results__score').textContent.trim()
             scoresStr = scoresStr.trim().replace(/\s+/g, '').split(/([a-zA-Z]+)/) // array of scores and optional retirement status
-            let scores = scoresStr[0].split('')
+            let scores = scoresStr[0].split('') || null
             let retirement = scoresStr[1] || null
             players.push({playerName, country, scores, retirement})
           }

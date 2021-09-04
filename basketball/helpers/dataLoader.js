@@ -35,7 +35,7 @@ export async function fetchBasketballData({league, leagueUrl, sceduleUrl, standi
         teamsStats,
         standings,
         leaderboards,
-        scedule
+        // scedule
       }
     }
 }
