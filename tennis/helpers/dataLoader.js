@@ -1,6 +1,6 @@
 import puppeteer from "puppeteer"
-import {getTennisRankings} from "./rankings.js"
-import {getTennisScedule} from "./scedule.js"
+import {getTennisRankings} from "../parsers/rankings.js"
+import {getTennisScedule} from "../parsers/scedule.js"
 // import {getLeaderboards} from "./leaderboards.js"
 
 export async function setupPuppeteer(){

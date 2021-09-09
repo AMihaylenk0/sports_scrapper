@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.10",
     "dotenv": "^10.0.0",
     "pg": "^8.7.1",
     "puppeteer": "^10.1.0",

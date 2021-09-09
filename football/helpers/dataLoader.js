@@ -1,9 +1,9 @@
 // import puppeteer from "puppeteer"
 import puppeteer from 'puppeteer-extra'
 import StealthPlugin from 'puppeteer-extra-plugin-stealth'
-import {getFootballStandings} from "./standings.js"
-import {getFootballTeamsStats} from "./teamsStats.js"
-import {getFootballPlayersStats} from "./playersStats.js"
+import {getFootballStandings} from "../parsers/standings.js"
+import {getFootballTeamsStats} from "../parsers/teamsStats.js"
+import {getFootballPlayersStats} from "../parsers/playersStats.js"
 puppeteer.use(StealthPlugin())
 
 export async function setupPuppeteer(){

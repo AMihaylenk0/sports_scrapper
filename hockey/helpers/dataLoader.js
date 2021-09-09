@@ -1,9 +1,9 @@
 import puppeteer from "puppeteer"
-import {getKHLStandings} from "./standings.js"
-import {getKHLScedule} from "./scedule.js"
-import {getKHLTeamsStats} from "./teamsStats.js"
-import {getKHLPlayersStats} from "./playersStats.js"
-import {getKHLPlayers} from "./players.js"
+import {getKHLStandings} from "../parsers/standings.js"
+import {getKHLScedule} from "../parsers/scedule.js"
+import {getKHLTeamsStats} from "../parsers/teamsStats.js"
+import {getKHLPlayersStats} from "../parsers/playersStats.js"
+import {getKHLPlayers} from "../parsers/players.js"
 // import {getLeaderboards} from "./leaderboards.js"
 
 export async function setupPuppeteer(){
