@@ -1,8 +1,8 @@
 import puppeteer from "puppeteer"
-import {getTeamsStats} from "./teamsStats.js"
-import {getStandings} from "./standings.js"
-import {getLeaderboards} from "./leaderboards.js"
-import {getLeagueScedule} from "./scedule.js"
+import {getTeamsStats} from "../parsers/teamsStats.js"
+import {getStandings} from "../parsers/standings.js"
+import {getLeaderboards} from "../parsers/leaderboards.js"
+import {getLeagueScedule} from "../parsers/scedule.js"
 
 export async function setupPuppeteer(){
   const browser = await puppeteer.launch(
