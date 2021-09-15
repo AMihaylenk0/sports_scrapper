@@ -66,7 +66,7 @@ async function parseAthleteProfile(athleteId) {
     bio[label] = bioItems[i]
   })
   // athlete country
-  const country = bio['Родной город'] ? getCountryFromHometown(bio['Родной город']) : ""
+  const country = bio['city'] ? getCountryFromHometown(bio['city']) : ""
 
   // win-loss-draw
   const headlineHtml = $('.c-hero--full .c-hero__headline-suffix')
