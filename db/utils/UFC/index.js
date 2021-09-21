@@ -55,7 +55,7 @@ async function saveUFCScedule(data) {
 }
 async function saveUFCEvents(data) {
   try {
-    await UFCEvents.bulkCreate( data, { updateOnDuplicate: Object.keys(UFCAthelets.rawAttributes)} )
+    await UFCEvents.bulkCreate( data, { updateOnDuplicate: ["fights"]} )
     console.log('UFC events updated')
   } catch (error) {
     throw error

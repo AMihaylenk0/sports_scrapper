@@ -2,11 +2,11 @@ const model = (sequelize, DataTypes) => {
 	return sequelize.define('UFCEvents', {
 		eventId: {
 			unique: true,
-			allowNull: true,
+			allowNull: false,
 			type: DataTypes.STRING
 		},
 		fights: {
-			allowNull: true,
+			allowNull: false,
 			type: DataTypes.JSON
 		},
 	});

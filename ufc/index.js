@@ -21,7 +21,7 @@ async function run(){
     season: 2021,
     items: scedule
   }
-
-  await saveUFCData(UFCLeaders, UFCAthletes, UFCScedule, events)
+  let UFCEvents = events.filter(x=> x && x.eventId)
+  await saveUFCData(UFCLeaders, UFCAthletes, UFCScedule, UFCEvents)
 }
 run()
