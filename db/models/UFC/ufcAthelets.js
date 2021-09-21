@@ -17,6 +17,10 @@ const model = (sequelize, DataTypes) => {
 			allowNull: true,
 			type: DataTypes.STRING
 		},
+		atheleteImg: {
+			allowNull: true,
+			type: DataTypes.STRING
+		},
 		country: {
 			allowNull: true,
 			type: DataTypes.STRING

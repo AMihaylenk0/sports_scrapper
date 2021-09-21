@@ -65,6 +65,9 @@ async function parseAthleteProfile(athleteId) {
     label = mapLabels(label)
     bio[label] = bioItems[i]
   })
+  // athlete image
+  const atheleteImg = $('.c-bio__image').find('img').attr("src")
+
   // athlete country
   const country = bio['city'] ? getCountryFromHometown(bio['city']) : ""
 
@@ -130,6 +133,7 @@ async function parseAthleteProfile(athleteId) {
     name,
     nickname: $('.field-name-nickname').text().trim().replace(/['"]+/g, ''),
     division,
+    atheleteImg,
     country,
     wins,
     losses,
