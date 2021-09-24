@@ -2,14 +2,16 @@ export async function getFootballStandings(page, standingsUrl){
   page.setDefaultTimeout(0)
   await page.goto(standingsUrl);
   await page.waitForSelector('.tournament-standings-table');
-  let table_headers
+  let table_headers = []
   let rowsValues = []
 
   try {
-    table_headers = await page.$$eval(
-      ".tournament-standings-table [id^='standings'] table thead tr[class*='general-header'] th",
-      (options) => options.map((option) => option.textContent)
-    )
+    if (!table_headers.length) {
+      table_headers = await page.$$eval(
+        ".tournament-standings-table [id^='standings'] table thead tr[class*='general-header'] th",
+        (options) => options.map((option) => option.textContent)
+      )
+    }
   } catch (error) {
     console.error(error)
   }

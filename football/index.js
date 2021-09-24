@@ -10,7 +10,6 @@ async function run(){
     console.log(`data for ${option.league} loaded`)
   }
   await closePuppeteer(browser, page)
-  console.log(footballData, 'footballdata')
   let footballStandings = footballData.map(x=>{
     return {
       season: 2021,
