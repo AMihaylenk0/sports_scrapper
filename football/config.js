@@ -37,13 +37,13 @@ export const options = [
   },
   {
     league: 'champions_league',
-    standingsUrl: 'https://ru.whoscored.com/Regions/250/Tournaments/12/%D0%95%D0%B2%D1%80%D0%BE%D0%BF%D0%B0-%D0%9B%D0%B8%D0%B3%D0%B0-%D1%87%D0%B5%D0%BC%D0%BF%D0%B8%D0%BE%D0%BD%D0%BE%D0%B2',
+    standingsUrl: 'https://ru.whoscored.com/Regions/250/Tournaments/12/Seasons/8623/Stages/20149/Show/%D0%95%D0%B2%D1%80%D0%BE%D0%BF%D0%B0-%D0%9B%D0%B8%D0%B3%D0%B0-%D1%87%D0%B5%D0%BC%D0%BF%D0%B8%D0%BE%D0%BD%D0%BE%D0%B2-2021-2022',
     teamsStatsUrl: 'https://ru.whoscored.com/Regions/250/Tournaments/12/Seasons/8623/Stages/20149/TeamStatistics/%D0%95%D0%B2%D1%80%D0%BE%D0%BF%D0%B0-%D0%9B%D0%B8%D0%B3%D0%B0-%D1%87%D0%B5%D0%BC%D0%BF%D0%B8%D0%BE%D0%BD%D0%BE%D0%B2-2021-2022',
     playersStatsUrl: 'https://ru.whoscored.com/Regions/250/Tournaments/12/Seasons/8623/Stages/20149/PlayerStatistics/%D0%95%D0%B2%D1%80%D0%BE%D0%BF%D0%B0-%D0%9B%D0%B8%D0%B3%D0%B0-%D1%87%D0%B5%D0%BC%D0%BF%D0%B8%D0%BE%D0%BD%D0%BE%D0%B2-2021-2022',
   },
   {
     league: 'europa_league',
-    standingsUrl: 'https://ru.whoscored.com/Regions/250/Tournaments/30/%D0%95%D0%B2%D1%80%D0%BE%D0%BF%D0%B0-%D0%9B%D0%B8%D0%B3%D0%B0-%D0%95%D0%B2%D1%80%D0%BE%D0%BF%D1%8B',
+    standingsUrl: 'https://ru.whoscored.com/Regions/250/Tournaments/30/Seasons/8741/Stages/20148/Show/%D0%95%D0%B2%D1%80%D0%BE%D0%BF%D0%B0-%D0%9B%D0%B8%D0%B3%D0%B0-%D0%95%D0%B2%D1%80%D0%BE%D0%BF%D1%8B-2021-2022',
     teamsStatsUrl: 'https://ru.whoscored.com/Regions/250/Tournaments/30/Seasons/8741/Stages/20148/TeamStatistics/%D0%95%D0%B2%D1%80%D0%BE%D0%BF%D0%B0-%D0%9B%D0%B8%D0%B3%D0%B0-%D0%95%D0%B2%D1%80%D0%BE%D0%BF%D1%8B-2021-2022',
     playersStatsUrl: 'https://ru.whoscored.com/Regions/250/Tournaments/30/Seasons/8741/Stages/20148/PlayerStatistics/%D0%95%D0%B2%D1%80%D0%BE%D0%BF%D0%B0-%D0%9B%D0%B8%D0%B3%D0%B0-%D0%95%D0%B2%D1%80%D0%BE%D0%BF%D1%8B-2021-2022',
   },

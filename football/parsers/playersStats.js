@@ -19,13 +19,13 @@ async function getSummuryStats(page) {
   try {
     let nextBtnSelector = "#statistics-paging-summary #next";
     await page.waitForSelector(nextBtnSelector);
-    let isNextBtnDisabled = await page.evaluate((nextBtnSelector) => document.querySelector(nextBtnSelector).className.includes('disabled'), nextBtnSelector)
+    let isNextBtnDisabled = await page.evaluate((nextBtnSelector) => document.querySelector(nextBtnSelector)?.className?.includes('disabled'), nextBtnSelector)
     while (!isNextBtnDisabled) {
       await page.waitForSelector(nextBtnSelector);
       await page.waitForTimeout(1000);
       await page.evaluate((nextBtnSelector) => document.querySelector(nextBtnSelector).click(), nextBtnSelector);
       await parseData()
-      isNextBtnDisabled = await page.evaluate((nextBtnSelector) => document.querySelector(nextBtnSelector).className.includes('disabled'), nextBtnSelector)
+      isNextBtnDisabled = await page.evaluate((nextBtnSelector) => document.querySelector(nextBtnSelector)?.className?.includes('disabled'), nextBtnSelector)
     }
     async function parseData(){
       await page.waitForSelector('#statistics-table-summary table');
@@ -88,14 +88,14 @@ async function getDefenseStats(page) {
 
     let nextBtnSelector = "#statistics-paging-defensive #next";
     await page.waitForSelector(nextBtnSelector);
-    let isNextBtnDisabled = await page.evaluate((nextBtnSelector) => document.querySelector(nextBtnSelector).className.includes('disabled'), nextBtnSelector)
+    let isNextBtnDisabled = await page.evaluate((nextBtnSelector) => document.querySelector(nextBtnSelector)?.className?.includes('disabled'), nextBtnSelector)
 
     while (!isNextBtnDisabled) {
       await page.waitForSelector(nextBtnSelector);
       await page.waitForTimeout(1000);
       await page.evaluate((nextBtnSelector) => document.querySelector(nextBtnSelector).click(), nextBtnSelector);
       await parseData()
-      isNextBtnDisabled = await page.evaluate((nextBtnSelector) => document.querySelector(nextBtnSelector).className.includes('disabled'), nextBtnSelector)
+      isNextBtnDisabled = await page.evaluate((nextBtnSelector) => document.querySelector(nextBtnSelector)?.className?.includes('disabled'), nextBtnSelector)
     }
     async function parseData(){
       await page.waitForSelector('#statistics-table-defensive table');
@@ -158,14 +158,14 @@ async function getOffensiveStats(page) {
 
     let nextBtnSelector = "#statistics-paging-offensive #next";
     await page.waitForSelector(nextBtnSelector);
-    let isNextBtnDisabled = await page.evaluate((nextBtnSelector) => document.querySelector(nextBtnSelector).className.includes('disabled'), nextBtnSelector)
+    let isNextBtnDisabled = await page.evaluate((nextBtnSelector) => document.querySelector(nextBtnSelector)?.className?.includes('disabled'), nextBtnSelector)
     
     while (!isNextBtnDisabled) {
       await page.waitForSelector(nextBtnSelector);
       await page.waitForTimeout(1000);
       await page.evaluate((nextBtnSelector) => document.querySelector(nextBtnSelector).click(), nextBtnSelector);
       await parseData()
-      isNextBtnDisabled = await page.evaluate((nextBtnSelector) => document.querySelector(nextBtnSelector).className.includes('disabled'), nextBtnSelector)
+      isNextBtnDisabled = await page.evaluate((nextBtnSelector) => document.querySelector(nextBtnSelector)?.className?.includes('disabled'), nextBtnSelector)
     }
     async function parseData(){
       await page.waitForSelector('#statistics-table-offensive table');
@@ -228,14 +228,14 @@ async function getAssistsStats(page) {
 
     let nextBtnSelector = "#statistics-paging-passing #next";
     await page.waitForSelector(nextBtnSelector);
-    let isNextBtnDisabled = await page.evaluate((nextBtnSelector) => document.querySelector(nextBtnSelector).className.includes('disabled'), nextBtnSelector)
+    let isNextBtnDisabled = await page.evaluate((nextBtnSelector) => document.querySelector(nextBtnSelector)?.className?.includes('disabled'), nextBtnSelector)
     
     while (!isNextBtnDisabled) {
       await page.waitForSelector(nextBtnSelector);
       await page.waitForTimeout(1000);
       await page.evaluate((nextBtnSelector) => document.querySelector(nextBtnSelector).click(), nextBtnSelector);
       await parseData()
-      isNextBtnDisabled = await page.evaluate((nextBtnSelector) => document.querySelector(nextBtnSelector).className.includes('disabled'), nextBtnSelector)
+      isNextBtnDisabled = await page.evaluate((nextBtnSelector) => document.querySelector(nextBtnSelector)?.className?.includes('disabled'), nextBtnSelector)
     }
     async function parseData(){
       await page.waitForSelector('#statistics-table-passing table');
