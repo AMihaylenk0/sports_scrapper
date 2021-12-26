@@ -2,7 +2,7 @@ import { fetchFootballData, setupPuppeteer, closePuppeteer } from './helpers/dat
 import { saveFootballStats } from '../db/utils/football/index.js'
 import { options } from './config.js'
 
-async function run(){
+export async function ScrapeFootballStats(){
   let {browser, page} = await setupPuppeteer()
   let footballData = []
   for (const option of options) {
@@ -36,4 +36,3 @@ async function run(){
   })
   await saveFootballStats(footballStandings, footballTeamsStats, footballPlayersStats)
 }
-run()

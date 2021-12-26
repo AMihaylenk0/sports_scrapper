@@ -2,7 +2,7 @@ import { fetchTennisData, setupPuppeteer, closePuppeteer } from './helpers/dataL
 import { saveTennisStats } from '../db/utils/tennis/index.js'
 import { options } from './config.js'
 
-async function run(){
+export async function ScrapeTennisStats(){
   let {browser, page} = await setupPuppeteer()
   let { rankings, scedule} = await fetchTennisData(options, page)
   await closePuppeteer(browser, page)
@@ -16,4 +16,3 @@ async function run(){
     }
   await saveTennisStats(tennisRankings,tennisScedule)
 }
-run()

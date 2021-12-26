@@ -2,7 +2,7 @@ import { fetchKHLData, setupPuppeteer, closePuppeteer } from './helpers/dataLoad
 import { saveHockeyStats } from '../db/utils/hockey/index.js'
 import { options } from './config.js'
 
-async function run(){
+export async function ScrapeHockeyStats(){
   let {browser, page} = await setupPuppeteer()
   let { standings, scedule, teamsStats, playersStats, players} = await fetchKHLData(options, page)
   await closePuppeteer(browser, page)
@@ -33,4 +33,3 @@ async function run(){
     }
   await saveHockeyStats(KHLStandings, KHLScedule, KHLTeamsStats, KHLPlayersStats, KHLPlayers)
 }
-run()

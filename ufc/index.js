@@ -2,7 +2,7 @@ import {parseUFCLeadersAndAtheletes} from "./parsers/leaderboards.js"
 import {parseUFCScedule} from "./parsers/scedule.js"
 import { saveUFCData } from '../db/utils/UFC/index.js'
 
-async function run(){
+export async function ScrapeUFCStats(){
   let {leaders, athletes} = await parseUFCLeadersAndAtheletes()
   let {scedule, events} = await parseUFCScedule()
   
@@ -24,4 +24,3 @@ async function run(){
   let UFCEvents = events.filter(x=> x && x.eventId)
   await saveUFCData(UFCLeaders, UFCAthletes, UFCScedule, UFCEvents)
 }
-run()
