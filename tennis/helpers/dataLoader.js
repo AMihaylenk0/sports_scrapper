@@ -8,7 +8,7 @@ export async function setupPuppeteer(){
     {
     headless: true,
     defaultViewport: null,
-    args: ['--start-maximized']
+    args: ['--start-maximized', '--no-sandbox']
   }
   );
 
