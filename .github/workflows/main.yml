@@ -3,8 +3,7 @@ name: Data source
 on:
   # on-webhook
   schedule:
-    # - cron: '0 0 * * *'
-    - cron: '*/5 * * * *'
+    - cron: '0 0 * * *'
   push:
     branches: [main]
 
@@ -28,7 +27,7 @@ jobs:
       if: steps.cache.outputs.cache-hit != 'true'
       # run: npm ci --ignore-scripts
       run: |
-        npm install
+        npm ci --ignore-scripts
     - name: Run index.js
       run: node index.js
       env:
